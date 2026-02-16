@@ -1,0 +1,19 @@
+
+{
+  "manifest_version": 3,
+  "name": "Tab Organizer - By Lucas Huang",
+  "version": "2.1",
+  "author": "Lucas Huang",
+  "icons": {
+    "128": "icon.png"
+  },
+  "action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["tabs", "tabGroups", "storage", "alarms"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

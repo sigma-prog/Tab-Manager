@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { 
+      width: 210px; 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+      background: #ffffff; 
+      color: #333; 
+      padding: 15px;
+      margin: 0;
+    }
+
+    .header {
+      font-size: 11px;
+      font-weight: bold;
+      color: #666;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .setting-row { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      margin-bottom: 12px; 
+    }
+
+    .setting-label {
+      font-size: 13px;
+      color: #222;
+    }
+
+    .switch { position: relative; width: 34px; height: 18px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+
+    .slider {
+      position: absolute; cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: .2s;
+      border-radius: 20px;
+    }
+
+    .slider:before {
+      position: absolute; content: "";
+      height: 12px; width: 12px;
+      left: 3px; bottom: 3px;
+      background-color: white;
+      transition: .2s;
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    input:checked + .slider { background-color: #1a73e8; } 
+    input:checked + .slider:before { transform: translateX(16px); }
+
+    .stats-container {
+      margin-top: 15px;
+      padding-top: 10px;
+      border-top: 1px solid #eee;
+      font-size: 12px;
+      color: #555;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .count-number {
+      font-weight: bold;
+      color: #1a73e8;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span>Tab Manager by LH</span>
+    <span>V 2.1</span>
+  </div>
+
+  <div class="setting-row">
+    <span class="setting-label">Auto-Collapse</span>
+    <label class="switch">
+      <input type="checkbox" id="collapseTgl" checked>
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="setting-row">
+    <span class="setting-label">Tab Movement</span>
+    <label class="switch">
+      <input type="checkbox" id="moveTgl" checked>
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="stats-container">
+    <span>Active Tabs:</span>
+    <span id="tabCount" class="count-number">--</span>
+  </div>
+
+ <div style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
+    <button id="quickDiscardBtn" style="width: 100%; padding: 8px; background: #1a73e8; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 11px; font-family: inherit;">
+      FREEZE OTHER TABS
+    </button>
+  </div>
+
+  <div style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
+    <span class="setting-label" style="font-size: 11px; font-weight: bold; color: #666;">FREEZE SPECIFIC GROUPS:</span>
+    <div id="groupList" style="margin-top: 8px; max-height: 80px; overflow-y: auto;">
+      </div>
+    <button id="discardBtn" style="width: 100%; margin-top: 8px; padding: 6px; background: #1a73e8; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 10px; font-family: inherit;">
+      FREEZE SELECTED
+    </button>
+
+  <div style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
+  <button id="cleanupBtn" style="width: 100%; padding: 8px; background: #34a853; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 11px; font-family: inherit; transition: opacity 0.2s;">
+    Close empty tabs
+  </div>
+
+  <div style="margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px;">
+  </div>
+
+  <div id="statusMsg" style="font-size: 10px; color: #1a73e8; text-align: center; margin-top: 10px; font-weight: bold; height: 12px;"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
